@@ -1,0 +1,73 @@
+[
+	{
+		"disease_season": "autumn",
+		"disease_code": "med-0001",
+		"disease_name": "감기", 
+		"disease_code": "aaa-0001",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "autumn",
+		"disease_name": "감기2", 
+		"disease_code": "aaa-0002",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "autumn",
+		"disease_name": "감기", 
+		"disease_code": "aaa-0003",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "autumn",
+		"disease_name": "감기", 
+		"disease_code": "aaa-0004",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "winter",
+		"disease_name": "코로나바이러스19", 
+		"disease_code": "aaa-0001",
+		"disease_protect": "마스크 착용",
+		"disease_cure": "7일간 격리 후 자택치료",
+	},
+	{
+		"disease_season": "winter",
+		"disease_name": "유행성독감", 
+		"disease_code": "aab-0002",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "winter",
+		"disease_name": "A형간염", 
+		"disease_code": "aab-0003",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "winter",
+		"disease_name": "B형간염", 
+		"disease_code": "aab-0004",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "winter",
+		"disease_name": "안구건조증", 
+		"disease_code": "aab-0005",
+		"disease_protect": "깜빡이기",
+		"disease_cure": "약먹기",
+	},
+	{
+		"disease_season": "winter",
+		"disease_name": "감기", 
+		"disease_code": "aab-0006",
+		"disease_protect": "손씻기",
+		"disease_cure": "약먹기",
+	}
+]
