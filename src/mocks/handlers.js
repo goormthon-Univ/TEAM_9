@@ -3,10 +3,10 @@ import diseaseData from "./data/disease.json";
 import medicineData from "./data/medicine.json";
 
 const diseaseMap = diseaseData.reduce((map, data) => {
-  map.set(data.disease_code, data);
+  return map.set(data.disease_code, data);
 }, new Map());
 const medicineMap = medicineData.reduce((map, data) => {
-  map.set(data.disease_code, data);
+  return map.set(data.disease_code, data);
 }, new Map());
 const notFoundError = new HttpResponse("404 not found", {
   status: 404,
@@ -24,7 +24,7 @@ function getSeason() {
 //msw (mock api를 작성하실 때는 /api/를 붙여서 작성해주세요)
 
 export const handlers = [
-  http.get("/api/disease/", () => {
+  http.get("/api/disease", () => {
     const season = getSeason();
     const disease_list = diseaseData
       .filter((e) => e.disease_season === season)

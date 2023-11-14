@@ -1,52 +1,52 @@
 [
-	{
-		"disease_code": "aaa-0001",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aaa-0002",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aaa-0003",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aaa-0004",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aaa-0001",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aab-0002",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aab-0003",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aab-0004",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aab-0005",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	},
-	{
-		"disease_code": "aab-0006",
-		"medicine_name": "타이레놀",
-		"medicine_comp": "아세트아미노핀 100g",
-	}
+    {
+        "disease_code": "aaa-0001",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aaa-0002",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aaa-0003",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aaa-0004",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aaa-0001",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aab-0002",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aab-0003",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aab-0004",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aab-0005",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    },
+    {
+        "disease_code": "aab-0006",
+        "medicine_name": "타이레놀",
+        "medicine_comp": "아세트아미노핀 100g"
+    }
 ]
