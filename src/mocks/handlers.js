@@ -49,7 +49,7 @@ export const handlers = [
   http.get("/api/disease/:id", ({ params }) => {
     const { id } = params;
     const data = diseaseData.find(({ disease_code }) => disease_code === id);
-    if (data === undefined) return notFoundError;
+    if (data === undefined) return notFoundError.clone();
     if (medicineMap.has(id))
       return HttpResponse.json({ ...data, ...medicineMap.get(id) });
     return HttpResponse.json({
@@ -75,7 +75,7 @@ export const handlers = [
   http.get("/api/medicine/:id", ({ params }) => {
     const { id } = params;
     const data = medicineData.find(({ disease_code }) => disease_code === id);
-    if (data === undefined) return notFoundError;
+    if (data === undefined) return notFoundError.clone();
     if (diseaseMap.has(id))
       return HttpResponse.json({
         ...data,

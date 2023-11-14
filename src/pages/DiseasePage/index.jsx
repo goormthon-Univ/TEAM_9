@@ -14,7 +14,10 @@ export default function DiseasePage() {
       <div className="banner">이것은 배너입니다.</div>
       <CenterMain>
         <h3>가을 질병 치료법</h3>
-        <SearchBar api="/api/search/disease" setQuery={setQuery} />
+        <SearchBar
+          api="/api/search/disease"
+          onSearch={(param) => setQuery(`/api/search/disease/${param}`)}
+        />
         <ErrorBoundary fallback={<div>Error!</div>}>
           <Suspense fallback={<div>Loading...</div>}>
             <DiseaseList resource={resource} />
