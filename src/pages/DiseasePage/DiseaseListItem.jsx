@@ -24,7 +24,7 @@ const ListItemName = styled.div`
   align-items: center;
 `;
 
-export function DiseaseItem({ data }) {
+export default function DiseaseItem({ data }) {
   return (
     <ListItem>
       <ListItemCode>코드 : {data.disease_code}</ListItemCode>
