@@ -11,7 +11,8 @@ const ListGrid = styled.div`
 `;
 
 export default function DiseaseList({ resource }) {
-  const data = resource().disease_list;
+  let data = resource();
+  if (data.disease_list) data = data.disease_list;
 
   return (
     <ListGrid>

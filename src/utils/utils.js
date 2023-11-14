@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const fetcherMap = new Map();
+
 export function wrapPromise(promise) {
   let state = "pending";
   let result = null;
@@ -25,5 +27,16 @@ export function wrapPromise(promise) {
 }
 
 export function fetchAxios(url, config = {}) {
-  return wrapPromise(axios(url, config).then((e) => e.data));
+  const key = JSON.stringify({ url, config });
+  if (fetcherMap.has(key)) {
+    const { promise, date } = fetcherMap.get(key);
+    if (Date.now() - date < 5000) return promise;
+  }
+  const value = {
+    promise: wrapPromise(axios(url, config).then((e) => e.data)),
+    date: Date.now(),
+  };
+  fetcherMap.set(key, value);
+
+  return value.promise;
 }

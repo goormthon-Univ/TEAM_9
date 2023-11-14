@@ -16,7 +16,9 @@ export default function DiseasePage() {
         <h3>가을 질병 치료법</h3>
         <SearchBar
           api="/api/search/disease"
-          onSearch={(param) => setQuery(`/api/search/disease/${param}`)}
+          onSearch={(param) => {
+            setQuery(`/api/search/disease/${param}`);
+          }}
         />
         <ErrorBoundary fallback={<div>Error!</div>}>
           <Suspense fallback={<div>Loading...</div>}>
