@@ -2,6 +2,7 @@ import { useState, useMemo, Suspense } from "react";
 import DiseaseList from "./DiseaseList.jsx";
 import ErrorBoundary from "../../components/ErrorBoundary.jsx";
 import SearchBar from "../../components/SearchBar.jsx";
+import CenterMain from "../../components/CenterMain.jsx";
 import { fetchAxios } from "../../utils/utils.js";
 
 export default function DiseasePage() {
@@ -11,7 +12,7 @@ export default function DiseasePage() {
   return (
     <>
       <div className="banner">이것은 배너입니다.</div>
-      <main>
+      <CenterMain>
         <h3>가을 질병 치료법</h3>
         <SearchBar api="/api/search/disease" setQuery={setQuery} />
         <ErrorBoundary fallback={<div>Error!</div>}>
@@ -19,7 +20,7 @@ export default function DiseasePage() {
             <DiseaseList resource={resource} />
           </Suspense>
         </ErrorBoundary>
-      </main>
+      </CenterMain>
     </>
   );
 }

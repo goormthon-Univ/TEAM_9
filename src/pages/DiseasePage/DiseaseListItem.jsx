@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ListItem = styled.div`
@@ -26,9 +27,11 @@ const ListItemName = styled.div`
 
 export default function DiseaseItem({ data }) {
   return (
-    <ListItem>
-      <ListItemCode>코드 : {data.disease_code}</ListItemCode>
-      <ListItemName>{data.disease_name}</ListItemName>
-    </ListItem>
+    <Link to={data.disease_code}>
+      <ListItem>
+        <ListItemCode>코드 : {data.disease_code}</ListItemCode>
+        <ListItemName>{data.disease_name}</ListItemName>
+      </ListItem>
+    </Link>
   );
 }

@@ -1,3 +1,6 @@
+import { useParams } from 'react-router-dom';
+
 export default function DiseaseDetailPage() {
-  return <div>페이지입니다.</div>;
+  const { diseaseId } = useParams();
+  return <div>{diseaseId}</div>;
 }
