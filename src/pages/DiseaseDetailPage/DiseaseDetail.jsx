@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import CenterMain from "../../components/CenterMain.jsx";
 
 const SummeryWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 60px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 `;
 
 const Pic = styled.div`
@@ -28,7 +27,7 @@ export default function DiseaseDetail({ resource }) {
   const data = resource();
 
   return (
-    <CenterMain>
+    <>
       <SummeryWrapper>
         <Pic>(사진, api 미존재)</Pic>
         <div className="descriptions">
@@ -52,6 +51,6 @@ export default function DiseaseDetail({ resource }) {
           <p>{data.medicine_name}</p>
         </section>
       </article>
-    </CenterMain>
+    </>
   );
 }
