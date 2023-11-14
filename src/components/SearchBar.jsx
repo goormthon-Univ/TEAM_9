@@ -1,22 +1,68 @@
 import { useState } from "react";
+import styled from "styled-components";
+import SearchIcon from "../assets/searchIcon.svg";
 
-export default function SearchBar({ onSearch }) {
+const Form = styled.form`
+  width: 100%;
+  height: 80px;
+  position: relative;
+`;
+
+const TextInput = styled.input`
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: 2px solid #ff6b00;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px 30px;
+  font-family: Pretendard;
+  font-size: 1.2rem;
+`;
+
+const SubmitButton = styled.div`
+  position: absolute;
+  right: 30px;
+  top: 24px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  &::after {
+    content: url(${SearchIcon});
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
+  &:active {
+    transform: scale(1);
+  }
+`;
+
+export default function SearchBar({ onSearch, placeholder = "" }) {
   const [query, setQuery] = useState("");
+  const onSubmit = () => {
+    if (query === "") return;
+    onSearch(query);
+  };
 
   return (
-    <form
+    <Form
       onSubmit={(e) => {
         e.preventDefault();
-        if (query === "") return;
-        onSearch(query);
+        onSubmit();
       }}
     >
-      <input
+      <TextInput
         type="text"
         value={query}
+        placeholder={placeholder}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <input type="submit" value="Submit" />
-    </form>
+      <SubmitButton onClick={onSubmit} />
+      <input type="submit" hidden />
+    </Form>
   );
 }

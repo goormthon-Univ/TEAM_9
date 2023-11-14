@@ -42,7 +42,11 @@ export default function DiseaseDetailPage() {
 
   return (
     <>
-      <SearchBar api="/api/search/disease" onSearch={onSearch} />
+      <SearchBar
+        api="/api/search/disease"
+        placeholder="질병을 입력해 주세요"
+        onSearch={onSearch}
+      />
       <DiseaseDetailMain diseaseId={diseaseId} />
     </>
   );

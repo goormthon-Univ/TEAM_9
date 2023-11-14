@@ -16,6 +16,7 @@ export default function DiseasePage() {
         <h3>가을 질병 치료법</h3>
         <SearchBar
           api="/api/search/disease"
+          placeholder="질병을 입력해 주세요"
           onSearch={(param) => {
             setQuery(`/api/search/disease/${param}`);
           }}
