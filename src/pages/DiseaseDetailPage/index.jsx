@@ -1,12 +1,8 @@
 import { useMemo, Suspense } from "react";
 import { useParams } from "react-router-dom";
+import DiseaseDetail from "./DiseaseDetail.jsx";
 import ErrorBoundary from "../../components/ErrorBoundary.jsx";
 import { fetchAxios } from "../../utils/utils.js";
-
-function DiseaseDetail({ resource }) {
-  const data = resource();
-  return <div>{JSON.stringify(data)}</div>;
-}
 
 export default function DiseaseDetailPage() {
   const { diseaseId } = useParams();
