@@ -61,8 +61,9 @@ export const handlers = [
   http.get("/api/medicine", () => {
     const season = getSeason();
     const medicine_list = medicineData.filter(
-      (e) => diseaseMap.get(e.disease_name)?.disease_season === season,
+      (e) => diseaseMap.get(e.disease_code)?.disease_season === season,
     );
+    console.log(medicine_list);
     return HttpResponse.json({ season, medicine_list });
   }),
   http.get("/api/search/medicine/:query", ({ params }) => {
