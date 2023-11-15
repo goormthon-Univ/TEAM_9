@@ -15,6 +15,7 @@ const Button = styles.span(({ $activate = false } = {}) => ({
   border: $activate ? "none" : "2px solid #FF6B00",
   borderRadius: "32px",
   backgroundColor: $activate ? "#FF6B00" : "white",
+  cursor: "pointer",
 }));
 
 export default function HealthGuideArticle() {
