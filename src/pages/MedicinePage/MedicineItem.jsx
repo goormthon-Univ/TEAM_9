@@ -25,7 +25,7 @@ export default function MedicineItem({ data }) {
       <ListItem>
         <ListItemThumb />
         <ListItemMedicine>{data.medicine_name}</ListItemMedicine>
-        <ListItemName>여기에 질병명 들어가야 하는데 api가 없음</ListItemName>
+        <ListItemName>{data.disease_name}</ListItemName>
       </ListItem>
     </Link>
   );

@@ -6,7 +6,11 @@ import Banner from "../../components/Banner.jsx";
 import SearchBar from "../../components/SearchBar.jsx";
 import CenterMain from "../../components/CenterMain.jsx";
 import { Title } from "../../components/paragraphs.jsx";
-import { fetchAxios, getSeasonString } from "../../utils/utils.js";
+import {
+  fetchAxios,
+  getSeasonCode,
+  getSeasonString,
+} from "../../utils/utils.js";
 
 const SearchHeader = styles.div`
   display: flex;
@@ -15,7 +19,7 @@ const SearchHeader = styles.div`
 `;
 
 export default function DiseasePage() {
-  const [query, setQuery] = useState("/api/disease");
+  const [query, setQuery] = useState(`/api/disease/${getSeasonCode()}`);
   const resource = useMemo(() => fetchAxios(query), [query]);
 
   return (

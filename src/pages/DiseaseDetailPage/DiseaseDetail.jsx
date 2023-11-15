@@ -15,6 +15,7 @@ const Pic = styled.div`
 `;
 export default function DiseaseDetail({ resource }) {
   const data = resource();
+  console.log(data);
 
   return (
     <>
@@ -22,7 +23,7 @@ export default function DiseaseDetail({ resource }) {
         <Pic>(사진, api 미존재)</Pic>
         <div className="descriptions">
           <SubTitle>{data.disease_name}</SubTitle>
-          <Bold>질병소개</Bold>
+          <Bold>질병증상</Bold>
           <p>(api 미존재, 백엔드와 상의 예정)</p>
         </div>
       </SummeryWrapper>
