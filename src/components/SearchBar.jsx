@@ -41,10 +41,14 @@ const SubmitButton = styled.div`
   }
 `;
 
-export default function SearchBar({ onSearch, placeholder = "" }) {
+export default function SearchBar({
+  onSearch,
+  placeholder = "",
+  canBlank = false,
+}) {
   const [query, setQuery] = useState("");
   const onSubmit = () => {
-    if (query === "") return;
+    if (!canBlank && query === "") return;
     onSearch(query);
   };
 

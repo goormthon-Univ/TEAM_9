@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 export const TitleSkeleton = styled.h2`
   width: 240px;
-  height: 2.25rem;
+  height: 2.625rem;
   background-color: #ccc;
 `;
 
 export const SubTitleSkeleton = styled.h3`
   width: 160px;
-  height: 1.8rem;
+  height: 1.875rem;
   background-color: #ccc;
 `;
 
@@ -23,6 +23,12 @@ const LineSkeleton = styled.span`
   width: ${(props) => props.width ?? 400}px;
   height: 1rem;
   margin: 0.25rem 0;
+  background-color: #ccc;
+`;
+
+export const NameSkeleton = styled.p`
+  width: 120px;
+  height: 1.5rem;
   background-color: #ccc;
 `;
 

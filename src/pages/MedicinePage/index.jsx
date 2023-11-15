@@ -1,10 +1,18 @@
 import { useState, useMemo, Suspense } from "react";
+import styles from "styled-components";
 import MedicineList from "./MedicineList.jsx";
 import ErrorBoundary from "../../components/ErrorBoundary.jsx";
 import Banner from "../../components/Banner.jsx";
 import SearchBar from "../../components/SearchBar.jsx";
 import CenterMain from "../../components/CenterMain.jsx";
+import { Title } from "../../components/paragraphs.jsx";
 import { fetchAxios } from "../../utils/utils.js";
+
+const SearchHeader = styles.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 export default function DiseasePage() {
   const [query, setQuery] = useState("/api/medicine");
@@ -14,15 +22,18 @@ export default function DiseasePage() {
     <>
       <Banner page="medicine" />
       <CenterMain>
-        <h3>가을 질병 의약품</h3>
-        <SearchBar
-          api="/api/search/medicine"
-          placeholder="의약품을 입력해 주세요"
-          onSearch={(param) => {
-            setQuery(`/api/search/medicine/${param}`);
-          }}
-        />
-        <ErrorBoundary fallback={<div>Error!</div>}>
+        <SearchHeader>
+          <Title>가을 질병 의약품</Title>
+          <SearchBar
+            api="/api/search/medicine"
+            placeholder="의약품을 입력해 주세요"
+            onSearch={(param) => {
+              setQuery(`/api/search/medicine/${param}`);
+            }}
+            canBlank
+          />
+        </SearchHeader>
+        <ErrorBoundary fallback={<div>Error!</div>} errorKey={query}>
           <Suspense fallback={<div>Loading...</div>}>
             <MedicineList resource={resource} />
           </Suspense>

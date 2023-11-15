@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Title, SubTitle, Bold } from "../../components/paragraphs.jsx";
 
 const SummeryWrapper = styled.div`
   display: flex;
@@ -12,17 +13,6 @@ const Pic = styled.div`
   height: 480px;
   background-color: #ccc;
 `;
-
-const Title = styled.h2`
-  font-size: 1.5rem;
-  font-weight: 700;
-`;
-
-const SubTitle = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-`;
-
 export default function DiseaseDetail({ resource }) {
   const data = resource();
 
@@ -31,8 +21,8 @@ export default function DiseaseDetail({ resource }) {
       <SummeryWrapper>
         <Pic>(사진, api 미존재)</Pic>
         <div className="descriptions">
-          <Title>{data.disease_name}</Title>
-          <SubTitle>질병소개</SubTitle>
+          <SubTitle>{data.disease_name}</SubTitle>
+          <Bold>질병소개</Bold>
           <p>(api 미존재, 백엔드와 상의 예정)</p>
         </div>
       </SummeryWrapper>
@@ -48,7 +38,7 @@ export default function DiseaseDetail({ resource }) {
         </section>
         <section>
           <SubTitle>관련 약품</SubTitle>
-          <p>{data.medicine_name}</p>
+          <p>{data.medicine_name ?? "없음"}</p>
         </section>
       </article>
     </>
