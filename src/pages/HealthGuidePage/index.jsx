@@ -1,14 +1,18 @@
-// import { useState } from "react";
-// import CenterMain from "../../components/CenterMain.jsx";
-// import { getSeasonCode, getSeasonString } from "../../utils/utils.js";
-// import guideData from "../../data/guideData.json";
+import Banner from "../../components/Banner.jsx";
+import HealthGuideArticle from "./HealthGuideArticle.jsx";
+import CenterMain from "../../components/CenterMain.jsx";
+import { Title } from "../../components/paragraphs.jsx";
+import { getSeasonString } from "../../utils/utils.js";
 
-// export default function HealthGuidePage() {
-//   const season = getSeasonCode();
-//   const seasonString = getSeasonString();
-//   return (
-//     <CenterMain>
-//       <h3></h3>
-//     </CenterMain>
-//   );
-// }
+export default function HealthGuidePage() {
+  const seasonString = getSeasonString();
+  return (
+    <>
+      <Banner page="healthGuide" />
+      <CenterMain>
+        <Title>{seasonString}철 건강 가이드</Title>
+        <HealthGuideArticle />
+      </CenterMain>
+    </>
+  );
+}
