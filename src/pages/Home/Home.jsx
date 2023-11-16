@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { FrameWrapper } from "./sections/Community/SelectCommunity";
-import { Group } from "./sections/Footer/Footer";
-import { GroupWrapper } from "./sections/Footer/FooterWrapper";
 import { Overlap } from "./sections/Main";
 import { OverlapGroup } from "./sections/Guide/HealthGuide";
-import { OverlapGroupWrapper } from "./sections/Header/Header";
 import { OverlapWrapper } from "./sections/Guide/LifeGuide";
 
 const StyledMain = styled.div`
@@ -145,11 +142,9 @@ export const Home = () => {
             <div className="rectangle-15" />
             <OverlapGroup />
             <OverlapWrapper />
-            <Group />
             <img className="line" alt="Line" src="https://c.animaapp.com/ULZ0sU3D/img/line-95.svg" />
             <p className="p">현재 계절에 많이 발생하는 질병</p>
             <div className="rectangle-16" />
-            <GroupWrapper />
             <div className="text-wrapper-14">의약품 추천</div>
             <div className="text-wrapper-15">더보기</div>
             <div className="box"/>
@@ -158,7 +153,6 @@ export const Home = () => {
             <div className="text-wrapper-17">더보기</div>
             <img className="vector" alt="Vector" src="https://c.animaapp.com/ULZ0sU3D/img/vector-1@2x.png" />
             <img className="vector-2" alt="Vector" src="https://c.animaapp.com/ULZ0sU3D/img/vector-1@2x.png" />
-            <OverlapGroupWrapper />
         </StyledMain>
     );
 };
