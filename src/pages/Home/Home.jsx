@@ -15,7 +15,7 @@ const StyledMain = styled.div`
   width: 100%;
 `;
 
-export const Home = () => {
+export default function main() {
   return (
     <StyledMain>
       <Overlap />
@@ -26,4 +26,4 @@ export const Home = () => {
       </CenterMain>
     </StyledMain>
   );
-};
+}
