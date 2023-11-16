@@ -19,7 +19,7 @@ const SearchHeader = styles.div`
 `;
 
 export default function DiseasePage() {
-  const [query, setQuery] = useState(`/api/disease/${getSeasonCode()}`);
+  const [query, setQuery] = useState(`/api/disease/season/${getSeasonCode()}`);
   const resource = useMemo(() => fetchAxios(query), [query]);
 
   return (
@@ -29,10 +29,10 @@ export default function DiseasePage() {
         <SearchHeader>
           <Title>{getSeasonString()} 질병 치료법</Title>
           <SearchBar
-            api="/api/search/disease"
+            api="/api/disease/search/"
             placeholder="질병을 입력해 주세요"
             onSearch={(param) => {
-              setQuery(`/api/search/disease/${param}`);
+              setQuery(`/api/disease/search/${param}`);
             }}
             canBlank
           />

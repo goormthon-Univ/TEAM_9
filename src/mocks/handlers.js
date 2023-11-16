@@ -22,13 +22,8 @@ function getSeason() {
 }
 
 function getSeasonDiseaseList(season) {
-  const disease_list = diseaseData
-    .filter((e) => e.disease_season === season)
-    .map(({ disease_code, disease_name }) => ({
-      disease_code,
-      disease_name,
-    }));
-  return { season, disease_list };
+  const disease_list = diseaseData.filter((e) => e.disease_season === season);
+  return disease_list;
 }
 
 function getDiseaseFromId(id) {
@@ -49,7 +44,7 @@ export const handlers = [
     const season = getSeason();
     return HttpResponse.json(getSeasonDiseaseList(season));
   }),
-  http.get("/api/search/disease/:query", ({ params }) => {
+  http.get("/api/disease/search/:query", ({ params }) => {
     const { query } = params;
     const filtered = diseaseData
       .filter((e) => e.disease_name.includes(query))
@@ -60,27 +55,28 @@ export const handlers = [
 
     return HttpResponse.json(filtered);
   }),
+  http.get("/api/disease/season/:season", ({ params }) => {
+    const { season } = params;
+
+    if (["spring", "summer", "autumn", "winter"].includes(season)) {
+      return HttpResponse.json(getSeasonDiseaseList(season));
+    } else return notFoundError.clone();
+  }),
   http.get("/api/disease/:id", ({ params }) => {
     const { id } = params;
 
-    if (["spring", "summer", "autumn", "winter"].includes(id)) {
-      return HttpResponse.json(getSeasonDiseaseList(id));
-    }
     const data = getDiseaseFromId(id);
     if (data === null) return notFoundError.clone();
     return HttpResponse.json(data);
   }),
   http.get("/api/medicine", () => {
-    const season = getSeason();
-    const medicine_list = medicineData
-      .filter((e) => diseaseMap.get(e.disease_code)?.disease_season === season)
-      .map((data) => ({
-        ...data,
-        disease_name: diseaseMap.get(data.disease_code).disease_name,
-      }));
-    return HttpResponse.json({ season, medicine_list });
+    const medicine_list = medicineData.map((data) => ({
+      ...data,
+      disease_name: diseaseMap.get(data.disease_code).disease_name,
+    }));
+    return HttpResponse.json(medicine_list);
   }),
-  http.get("/api/search/medicine/:query", ({ params }) => {
+  http.get("/api/medicine/search/:query", ({ params }) => {
     const { query } = params;
     const medicine_list = medicineData.filter((e) =>
       e.medicine_name.includes(query),
@@ -89,12 +85,12 @@ export const handlers = [
   }),
   http.get("/api/medicine/:id", ({ params }) => {
     const { id } = params;
-    const data = medicineData.find(({ disease_code }) => disease_code === id);
+    const data = medicineData.find(({ medicine_code }) => medicine_code === id);
     if (data === undefined) return notFoundError.clone();
-    if (diseaseMap.has(id))
+    if (diseaseMap.has(data.disease_code))
       return HttpResponse.json({
         ...data,
-        disease_name: diseaseMap.get(id).disease_name,
+        disease_name: diseaseMap.get(data.disease_code).disease_name,
       });
     return HttpResponse.json({
       ...data,

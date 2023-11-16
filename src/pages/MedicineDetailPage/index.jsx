@@ -30,13 +30,12 @@ export default function MedicineDetailPage() {
   const navigate = useNavigate();
   const onSearch = useCallback(
     (param) => {
-      axios.get(`/api/search/medicine/${param}`).then(({ data }) => {
+      axios.get(`/api/medicine/search/${param}`).then(({ data }) => {
         if (data.length === 0) {
           console.log("찾는 게 없어요!");
           return;
         }
-        console.log(data[0].disease_code);
-        navigate(`/medicine/${data[0].disease_code}`);
+        navigate(`/medicine/${data[0].medicine_code}`);
       });
     },
     [navigate],
@@ -45,7 +44,7 @@ export default function MedicineDetailPage() {
   return (
     <CenterMain>
       <SearchBar
-        api="/api/search/medicine"
+        api="/api/medicine/search/"
         placeholder="의약품을 입력해 주세요"
         onSearch={onSearch}
       />

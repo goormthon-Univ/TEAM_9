@@ -25,10 +25,10 @@ export default function DiseasePage() {
         <SearchHeader>
           <Title>가을 질병 의약품</Title>
           <SearchBar
-            api="/api/search/medicine"
+            api="/api/medicine/search/"
             placeholder="의약품을 입력해 주세요"
             onSearch={(param) => {
-              setQuery(`/api/search/medicine/${param}`);
+              setQuery(`/api/medicine/search/${param}`);
             }}
             canBlank
           />

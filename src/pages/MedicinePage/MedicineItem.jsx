@@ -7,7 +7,14 @@ const ListItem = styled.div`
   color: black;
 `;
 
-const ListItemThumb = styled.div`
+const ListItemThumb = styled.img`
+  width: 262px;
+  height: 262px;
+  background-color: #d9d9d9;
+  object-fit: cover;
+`;
+
+const ListItemThumbSkeleton = styled.div`
   width: 262px;
   height: 262px;
   background-color: #d9d9d9;
@@ -21,9 +28,13 @@ const ListItemName = styled.p``;
 
 export default function MedicineItem({ data }) {
   return (
-    <Link to={data.disease_code}>
+    <Link to={data.medicine_code}>
       <ListItem>
-        <ListItemThumb />
+        {data.medicine_image ? (
+          <ListItemThumb src={data.medicine_image} alt={data.medicine_name} />
+        ) : (
+          <ListItemThumbSkeleton />
+        )}
         <ListItemMedicine>{data.medicine_name}</ListItemMedicine>
         <ListItemName>{data.disease_name}</ListItemName>
       </ListItem>

@@ -17,15 +17,15 @@ export default function MedicineDetail({ resource }) {
       <article>
         <section>
           <SubTitle>효능</SubTitle>
-          <p>(api 미존재, 백엔드와 상의 예정)</p>
+          <p>{data.medicine_efficacy || "없음"}</p>
         </section>
         <section>
           <SubTitle>용법, 용량</SubTitle>
-          <p>{data.medicine_comp}</p>
+          <p>{data.medicine_usage || "없음"}</p>
         </section>
         <section>
           <SubTitle>주의사항</SubTitle>
-          <p>(api 미존재, 백엔드와 상의 예정)</p>
+          <p>{data.medicine_caution || "없음"}</p>
         </section>
       </article>
     </>

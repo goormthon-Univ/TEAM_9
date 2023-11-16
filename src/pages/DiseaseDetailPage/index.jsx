@@ -30,7 +30,7 @@ export default function DiseaseDetailPage() {
   const navigate = useNavigate();
   const onSearch = useCallback(
     (param) => {
-      axios.get(`/api/search/disease/${param}`).then(({ data }) => {
+      axios.get(`/api/disease/search/${param}`).then(({ data }) => {
         if (data.length === 0) {
           console.log("찾는 게 없어요!");
           return;

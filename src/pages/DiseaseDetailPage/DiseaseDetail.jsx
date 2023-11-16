@@ -6,16 +6,19 @@ const SummeryWrapper = styled.div`
   justify-content: flex-start;
   gap: 60px;
   margin-bottom: 60px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 const Pic = styled.div`
   width: 340px;
   height: 480px;
   background-color: #ccc;
+  flex-shrink: 0;
 `;
 export default function DiseaseDetail({ resource }) {
   const data = resource();
-  console.log(data);
 
   return (
     <>
@@ -24,7 +27,7 @@ export default function DiseaseDetail({ resource }) {
         <div className="descriptions">
           <SubTitle>{data.disease_name}</SubTitle>
           <Bold>질병증상</Bold>
-          <p>(api 미존재, 백엔드와 상의 예정)</p>
+          <p>{data.disease_symptom}</p>
         </div>
       </SummeryWrapper>
       <article>

@@ -17,7 +17,7 @@ export default function MedicineList({ resource }) {
   return (
     <ListGrid>
       {data.map((e) => (
-        <MedicineItem key={e.disease_code} data={e} />
+        <MedicineItem key={e.medicine_code} data={e} />
       ))}
     </ListGrid>
   );
