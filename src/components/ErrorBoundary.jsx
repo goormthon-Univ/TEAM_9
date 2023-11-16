@@ -12,12 +12,17 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error) {
+    this.setState({ errorKey: this.props.errorKey });
     console.error(error);
     return;
   }
 
   render() {
-    if (this.state.hasError) {
+    if (
+      this.state.hasError &&
+      (this.state.errorKey === undefined ||
+        this.state.errorKey === this.props.errorKey)
+    ) {
       return this.props.fallback;
     }
     return this.props.children;
