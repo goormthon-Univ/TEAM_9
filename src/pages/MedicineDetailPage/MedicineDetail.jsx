@@ -1,19 +1,35 @@
+import styles from "styled-components";
 import { SubTitle, Bold } from "../../components/paragraphs.jsx";
+
+const Summery = styles.div`
+  display: flex;
+  gap: 80px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
+const Pic = styles.img`
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+`;
 
 export default function MedicineDetail({ resource }) {
   const data = resource();
 
   return (
     <>
-      <div className="summery">
+      <SubTitle>{data.disease_name}</SubTitle>
+      <Summery>
+        <Pic src={data.medicine_image} alt={data.medicine_name} />
         <div className="descriptions">
-          <SubTitle>{data.disease_name}</SubTitle>
           <Bold>의약품 명</Bold>
           <p>{data.medicine_name}</p>
           <Bold>질병소개</Bold>
           <p>(api 미존재, 백엔드와 상의 예정)</p>
         </div>
-      </div>
+      </Summery>
       <article>
         <section>
           <SubTitle>효능</SubTitle>
