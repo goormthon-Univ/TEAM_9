@@ -1,20 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar.jsx";
 import Footer from "./components/Footer.jsx";
-import MainPage from "./pages/MainPage";
 import DiseasePage from "./pages/DiseasePage";
 import DiseaseDetailPage from "./pages/DiseaseDetailPage";
 import MedicinePage from "./pages/MedicinePage";
 import MedicineDetailPage from "./pages/MedicineDetailPage";
 import HealthGuidePage from "./pages/HealthGuidePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import {Home} from "./pages/Home/Home.jsx";
 
-function Rounter() {
+function Router() {
   return (
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route exact path="/" element={<MainPage />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="disease">
           <Route path=":diseaseId" element={<DiseaseDetailPage />} />
           <Route path="" element={<DiseasePage />} />
@@ -36,7 +36,7 @@ function Rounter() {
 }
 
 function App() {
-  return <Rounter />;
+  return <Router />;
 }
 
 export default App;
