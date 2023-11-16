@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SubTitle } from "../../../../components/paragraphs.jsx";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,7 +44,9 @@ export default function MedicineRecommand() {
     <Wrapper>
       <div className="title">
         <SubTitle className="noMargin">의약품 추천</SubTitle>
-        <span className="more">더보기</span>
+        <Link to="/recommand">
+          <span className="more">더보기</span>
+        </Link>
       </div>
       <div className="topBox"></div>
       <div className="listBox">

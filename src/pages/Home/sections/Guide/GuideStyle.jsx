@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledOverlapWrapper = styled.div`
+const GuideStyle = styled.div`
   flex: 50% 1 1;
   height: 100%;
   box-sizing: border-box;
@@ -32,4 +32,4 @@ const StyledOverlapWrapper = styled.div`
   }
 `;
 
-export default StyledOverlapWrapper;
+export default GuideStyle;
