@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar.jsx";
+import Footer from "./components/Footer.jsx";
 import MainPage from "./pages/MainPage";
 import DiseasePage from "./pages/DiseasePage";
 import DiseaseDetailPage from "./pages/DiseaseDetailPage";
@@ -10,6 +12,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 function Rounter() {
   return (
     <BrowserRouter>
+      <NavigationBar />
       <Routes>
         <Route exact path="/" element={<MainPage />} />
         <Route path="disease">
@@ -27,6 +30,7 @@ function Rounter() {
         </Route>
         <Route path={"*"} element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
