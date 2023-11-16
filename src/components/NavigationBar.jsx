@@ -7,6 +7,8 @@ const NavWrapper = styles.nav`
 	z-index: 25;
 	width: 100%;
 	height: 120px;
+  padding: 0px 20px;
+  box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	align-items: center;
