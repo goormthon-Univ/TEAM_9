@@ -7,7 +7,7 @@ import MedicinePage from "./pages/MedicinePage";
 import MedicineDetailPage from "./pages/MedicineDetailPage";
 import HealthGuidePage from "./pages/HealthGuidePage";
 import NotFoundPage from "./pages/NotFoundPage";
-import {Home} from "./pages/Home/Home.jsx";
+import { Home } from "./pages/Home/Home.jsx";
 
 function Router() {
   return (
