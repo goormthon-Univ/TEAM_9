@@ -4,11 +4,13 @@ import DiseaseDetailPage from "./pages/DiseaseDetailPage";
 import MedicinePage from "./pages/MedicinePage";
 import MedicineDetailPage from "./pages/MedicineDetailPage";
 import HealthGuidePage from "./pages/HealthGuidePage";
+import {Home} from "./pages/Home/Home";
 
-function Rounter() {
+function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route exact path="/" element={<Home />} />
         <Route path="disease">
           <Route path=":diseaseId" element={<DiseaseDetailPage />} />
           <Route path="" element={<DiseasePage />} />
@@ -24,7 +26,7 @@ function Rounter() {
 }
 
 function App() {
-  return <Rounter />;
+  return <Router />;
 }
 
 export default App;
