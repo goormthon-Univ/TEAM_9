@@ -17,7 +17,10 @@ function Rounter() {
           <Route path=":medicineId" element={<MedicineDetailPage />} />
           <Route path="" element={<MedicinePage />} />
         </Route>
-        <Route path="healthGuide" element={<HealthGuidePage />} />
+        <Route path="healthGuide">
+          <Route path="food" element={<HealthGuidePage content="food" />} />
+          <Route path="living" element={<HealthGuidePage content="living" />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
