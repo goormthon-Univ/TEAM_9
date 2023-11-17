@@ -3,7 +3,7 @@
     { "source": "/(.*)", "destination": "/" },
     {
       "source": "/api/(.*)",
-      "destination": "https://seasonwell.run.goorm.site/api/:path*"
+      "destination": "https://seasonwell.run.goorm.site/api/(.*)"
     }
   ]
 }
