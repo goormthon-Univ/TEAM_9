@@ -4,8 +4,9 @@ import ErrorBoundary from "../../components/ErrorBoundary.jsx";
 import { fetchAxios } from "../../utils/utils.js";
 
 function HubListViewer({ resource, mapper }) {
-  let data = resource().slice(0, 4);
-  return <ListGrid>{data.map(mapper)}</ListGrid>;
+  let rawData = resource();
+  if (rawData?.result !== undefined) rawData = rawData.result; //pending backend
+  return <ListGrid>{rawData.map(mapper)}</ListGrid>;
 }
 
 export default function HubList({ api, mapper }) {
