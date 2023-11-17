@@ -42,7 +42,6 @@ function Router() {
           <Route path="write" element={<WritePage content="write" />} />
           <Route path=":postNumber" element={<CommunityDetailPage />} />
           {/* <Route path="1" element={<CommunityDetailPage />} /> */}
-
           <Route path="" element={<CommunityPage content="mainboard" />} />
         </Route>
         {/* <Route path={"*"} element={<NotFoundPage />} /> */}
