@@ -28,7 +28,7 @@ const ListItemName = styled.p``;
 
 export default function MedicineItem({ data }) {
   return (
-    <Link to={data.medicine_code}>
+    <Link to={`/medicine/medicine/${data.medicine_code}`}>
       <ListItem>
         {data.medicine_image ? (
           <ListItemThumb src={data.medicine_image} alt={data.medicine_name} />

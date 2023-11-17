@@ -1,4 +1,5 @@
 import { useState, useMemo, Suspense } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "styled-components";
 import MedicineList from "./MedicineList.jsx";
 import ErrorBoundary from "../../components/ErrorBoundary.jsx";
@@ -14,8 +15,17 @@ const SearchHeader = styles.div`
   gap: 10px;
 `;
 
-export default function DiseasePage() {
-  const [query, setQuery] = useState("/api/medicine");
+function useSearchParam() {
+  const location = useLocation();
+  const urlSearch = new URLSearchParams(location.search);
+  return urlSearch.get("query");
+}
+
+export default function MedicinePage() {
+  const param = useSearchParam();
+  const [query, setQuery] = useState(
+    param === null ? "/api/medicine" : `/api/medicine/search/${param}`,
+  );
   const resource = useMemo(() => fetchAxios(query), [query]);
 
   return (

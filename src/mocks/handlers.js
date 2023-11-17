@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw";
 import diseaseData from "./data/disease.json";
 import medicineData from "./data/medicine.json";
+import nutrientData from "./data/nutrient.json";
 
 const diseaseMap = diseaseData.reduce((map, data) => {
   return map.set(data.disease_code, data);
@@ -90,6 +91,18 @@ export const handlers = [
     );
     return HttpResponse.json(medicine_list);
   }),
+  http.get("/api/medicine/representation", () => {
+    const medicine_list = medicineData
+      .filter(
+        (data) =>
+          diseaseMap.get(data.disease_code)?.disease_season === getSeason(),
+      )
+      .map((data) => ({
+        ...data,
+        disease_name: diseaseMap.get(data.disease_code).disease_name,
+      }));
+    return HttpResponse.json(medicine_list.slice(0, 4));
+  }),
   http.get("/api/medicine/:id", ({ params }) => {
     const { id } = params;
     const data = medicineData.find(({ medicine_code }) => medicine_code === id);
@@ -101,10 +114,33 @@ export const handlers = [
       });
     return HttpResponse.json({
       ...data,
-      disease_name: null,
       disease_code: null,
     });
   }),
+  http.get("/api/nutrients", () => {
+    return HttpResponse.json(nutrientData);
+  }),
+  http.get("/api/nutrients/:id", ({ params }) => {
+    const { id: paramId } = params;
+    const data = nutrientData.find(({ id }) => {
+      return String(id) === paramId;
+    });
+    if (data === undefined) return notFoundError.clone();
+
+    const result = {
+      id: data.id,
+      image_url: data.image_url,
+      nutrients_name: data.nutrients_name,
+      nutrients_efficiency: data.nutrients_efficiency,
+      diseases: data.disease_codes.map((code) => ({
+        code,
+        name: diseaseMap.get(code).disease_name,
+      })),
+    };
+
+    return HttpResponse.json(result);
+  }),
+
   http.get("/api/invalid", () => {
     return new HttpResponse("404 not found", {
       status: 404,
