@@ -34,11 +34,11 @@ export default function DiseaseDetail({ resource }) {
         <Title>질병 치료법</Title>
         <section>
           <SubTitle>예방법</SubTitle>
-          <p>{data.disease_protect}</p>
+          <p>{data.disease_protect.description}</p>
         </section>
         <section>
           <SubTitle>치료법</SubTitle>
-          <p>{data.disease_cure}</p>
+          <p>{data.disease_cure.description}</p>
         </section>
         <section>
           <SubTitle>관련 약품</SubTitle>

@@ -22,7 +22,13 @@ function getSeason() {
 }
 
 function getSeasonDiseaseList(season) {
-  const disease_list = diseaseData.filter((e) => e.disease_season === season);
+  const disease_list = diseaseData
+    .filter((e) => e.disease_season === season)
+    .map(({ disease_code, disease_name, disease_image }) => ({
+      disease_code,
+      disease_name,
+      disease_image,
+    }));
   return disease_list;
 }
 
@@ -48,9 +54,10 @@ export const handlers = [
     const { query } = params;
     const filtered = diseaseData
       .filter((e) => e.disease_name.includes(query))
-      .map(({ disease_code, disease_name }) => ({
+      .map(({ disease_code, disease_name, disease_image }) => ({
         disease_code,
         disease_name,
+        disease_image,
       }));
 
     return HttpResponse.json(filtered);
