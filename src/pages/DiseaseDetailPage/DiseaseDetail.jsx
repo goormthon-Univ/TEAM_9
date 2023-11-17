@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import DiseaseProtectTable from "./DiseaseProtectTable.jsx";
 import DiseaseCureTable from "./DiseaseCureTable.jsx";
-import { Title, SubTitle, Bold } from "../../components/paragraphs.jsx";
+import {
+  Title,
+  SubTitle,
+  Bold,
+  Paragraph,
+} from "../../components/paragraphs.jsx";
 
 const SummeryWrapper = styled.div`
   display: flex;
@@ -19,13 +24,6 @@ const Pic = styled.img`
   background-color: #ccc;
   flex-shrink: 0;
   object-fit: cover;
-`;
-
-const Paragraph = styled.p`
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 32px;
-  letter-spacing: 0em;
 `;
 
 export default function DiseaseDetail({ resource }) {
