@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledOverlap = styled.div`
@@ -90,7 +91,11 @@ export const Overlap = () => {
           알아보고 싶다면?
         </div>
         <div className="frame">
-          <div className="div">알아보러가기</div>
+          <div className="div">
+            <Link to="/healthGuide">
+              <span>더 알아보기</span>
+            </Link>
+          </div>
         </div>
       </div>
     </StyledOverlap>
