@@ -37,8 +37,12 @@ export default function DiseaseProtectTable({ data }) {
 
   return (
     <Container>
-      {data.map(({ icon, caption }) => (
-        <TableItem icon={icon} caption={caption} key={caption} />
+      {data.map(({ prevention_image, prevention_text }) => (
+        <TableItem
+          icon={prevention_image}
+          caption={prevention_text}
+          key={prevention_text}
+        />
       ))}
     </Container>
   );

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import DiseaseProtectTable from "./DiseaseProtectTable.jsx";
-import DiseaseCureTable from "./DiseaseCureTable.jsx";
+import DiseaseMedicine from "./DiseaseMedicine.jsx";
 import {
   Title,
   SubTitle,
@@ -43,17 +43,16 @@ export default function DiseaseDetail({ resource }) {
         <Title>질병 치료법</Title>
         <section>
           <SubTitle>예방법</SubTitle>
-          <DiseaseProtectTable data={data.disease_protect.keywords} />
+          <DiseaseProtectTable data={data.disease_protect.keyword} />
           <Paragraph>{data.disease_protect.description}</Paragraph>
         </section>
         <section>
           <SubTitle>치료법</SubTitle>
-          <DiseaseCureTable data={data.disease_cure.keywords} />
           <Paragraph>{data.disease_cure.description}</Paragraph>
         </section>
         <section>
           <SubTitle>관련 약품</SubTitle>
-          <Paragraph>{data.medicine_name ?? "없음"}</Paragraph>
+          <DiseaseMedicine data={data.disease_cure.keyword} />
         </section>
       </article>
     </>
