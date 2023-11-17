@@ -1,6 +1,15 @@
 [
     {
         "disease_codes": [
+            "J209-02"
+        ],
+        "nutrients_name": "영양제5",
+        "nutrients_efficiency": "효능5",
+        "image_url": "https://tgzzmmgvheix1905536.cdn.ntruss.com/2020/02/73d71a9a19234194bed8f823657dbe2b",
+        "id": 5
+    },
+    {
+        "disease_codes": [
             "A08",
             "G439"
         ],

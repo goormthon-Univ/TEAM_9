@@ -128,6 +128,14 @@ export const handlers = [
     if (data === undefined) return notFoundError.clone();
     return HttpResponse.json(data);
   }),
+  http.get("/api/nutrients/representation", () => {
+    const nutrient_list = nutrientData.filter((data) =>
+      data.disease_codes.some(
+        (code) => diseaseMap.get(code)?.disease_season === getSeason(),
+      ),
+    );
+    return HttpResponse.json(nutrient_list.slice(0, 4));
+  }),
   http.get("/api/nutrients/:id", ({ params }) => {
     const { id: paramId } = params;
     const data = nutrientData.find(({ id }) => {
