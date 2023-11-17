@@ -1,5 +1,4 @@
 import { http, HttpResponse } from 'msw';
-import { API_URL } from '../config';
 import diseaseData from './data/disease.json';
 import medicineData from './data/medicine.json';
 import nutrientData from './data/nutrient.json';
@@ -46,12 +45,13 @@ function getDiseaseFromId(id) {
 }
 
 //msw (mock api를 작성하실 때는 /api/를 붙여서 작성해주세요)
+
 export const handlers = [
-  http.get(`${API_URL}/api/disease`, () => {
+  http.get('/api/disease', () => {
     const season = getSeason();
     return HttpResponse.json(getSeasonDiseaseList(season));
   }),
-  http.get(`${API_URL}/api/disease/search/:query`, ({ params }) => {
+  http.get('/api/disease/search/:query', ({ params }) => {
     const { query } = params;
     const filtered = diseaseData
       .filter((e) => e.disease_name.includes(query))
@@ -63,35 +63,35 @@ export const handlers = [
 
     return HttpResponse.json(filtered);
   }),
-  http.get(`${API_URL}/api/disease/season/:season`, ({ params }) => {
+  http.get('/api/disease/season/:season', ({ params }) => {
     const { season } = params;
 
     if (['spring', 'summer', 'autumn', 'winter'].includes(season)) {
       return HttpResponse.json(getSeasonDiseaseList(season));
     } else return notFoundError.clone();
   }),
-  http.get(`${API_URL}/api/disease/:id`, ({ params }) => {
+  http.get('/api/disease/:id', ({ params }) => {
     const { id } = params;
 
     const data = getDiseaseFromId(id);
     if (data === null) return notFoundError.clone();
     return HttpResponse.json(data);
   }),
-  http.get(`${API_URL}/api/medicine`, () => {
+  http.get('/api/medicine', () => {
     const medicine_list = medicineData.map((data) => ({
       ...data,
       disease_name: diseaseMap.get(data.disease_code).disease_name,
     }));
     return HttpResponse.json(medicine_list);
   }),
-  http.get(`${API_URL}/api/medicine/search/:query`, ({ params }) => {
+  http.get('/api/medicine/search/:query', ({ params }) => {
     const { query } = params;
     const medicine_list = medicineData.filter((e) =>
       e.medicine_name.includes(query),
     );
     return HttpResponse.json(medicine_list);
   }),
-  http.get(`${API_URL}/api/medicine/representation`, () => {
+  http.get('/api/medicine/representation', () => {
     const medicine_list = medicineData
       .filter(
         (data) =>
@@ -103,7 +103,7 @@ export const handlers = [
       }));
     return HttpResponse.json(medicine_list.slice(0, 4));
   }),
-  http.get(`${API_URL}/api/medicine/:id`, ({ params }) => {
+  http.get('/api/medicine/:id', ({ params }) => {
     const { id } = params;
     const data = medicineData.find(({ medicine_code }) => medicine_code === id);
     if (data === undefined) return notFoundError.clone();
@@ -117,10 +117,10 @@ export const handlers = [
       disease_code: null,
     });
   }),
-  http.get(`${API_URL}/api/nutrients`, () => {
+  http.get('/api/nutrients', () => {
     return HttpResponse.json(nutrientData);
   }),
-  http.get(`${API_URL}/api/nutrients/search/:query`, ({ params }) => {
+  http.get('/api/nutrients/search/:query', ({ params }) => {
     const { query } = params;
     const data = nutrientData.filter(({ nutrients_name }) =>
       nutrients_name.includes(query),
@@ -128,7 +128,7 @@ export const handlers = [
     if (data === undefined) return notFoundError.clone();
     return HttpResponse.json(data);
   }),
-  http.get(`${API_URL}/api/nutrients/representation`, () => {
+  http.get('/api/nutrients/representation', () => {
     const nutrient_list = nutrientData.filter((data) =>
       data.disease_codes.some(
         (code) => diseaseMap.get(code)?.disease_season === getSeason(),
@@ -136,7 +136,7 @@ export const handlers = [
     );
     return HttpResponse.json(nutrient_list.slice(0, 4));
   }),
-  http.get(`${API_URL}/api/nutrients/:id`, ({ params }) => {
+  http.get('/api/nutrients/:id', ({ params }) => {
     const { id: paramId } = params;
     const data = nutrientData.find(({ id }) => {
       return String(id) === paramId;
@@ -157,7 +157,7 @@ export const handlers = [
     return HttpResponse.json(result);
   }),
 
-  http.get(`${API_URL}/api/invalid`, () => {
+  http.get('/api/invalid', () => {
     return new HttpResponse('404 not found', {
       status: 404,
       headers: {
