@@ -45,6 +45,7 @@ function getDiseaseFromId(id) {
 }
 
 //msw (mock api를 작성하실 때는 /api/를 붙여서 작성해주세요)
+
 export const handlers = [
   http.get("/api/disease", () => {
     const season = getSeason();
