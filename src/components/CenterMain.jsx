@@ -8,7 +8,7 @@ const CenterMain = styled.main`
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: ${({ $gap = 40 }) => $gap}px;
 `;
 
 export default CenterMain;
