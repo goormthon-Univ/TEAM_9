@@ -120,6 +120,14 @@ export const handlers = [
   http.get("/api/nutrients", () => {
     return HttpResponse.json(nutrientData);
   }),
+  http.get("/api/nutrients/search/:query", ({ params }) => {
+    const { query } = params;
+    const data = nutrientData.filter(({ nutrients_name }) =>
+      nutrients_name.includes(query),
+    );
+    if (data === undefined) return notFoundError.clone();
+    return HttpResponse.json(data);
+  }),
   http.get("/api/nutrients/:id", ({ params }) => {
     const { id: paramId } = params;
     const data = nutrientData.find(({ id }) => {

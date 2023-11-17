@@ -7,7 +7,7 @@ import Banner from "../../components/Banner.jsx";
 import SearchBar from "../../components/SearchBar.jsx";
 import CenterMain from "../../components/CenterMain.jsx";
 import { Title } from "../../components/paragraphs.jsx";
-import { fetchAxios } from "../../utils/utils.js";
+import { fetchAxios, getSeasonString } from "../../utils/utils.js";
 
 const SearchHeader = styles.div`
   display: flex;
@@ -33,7 +33,7 @@ export default function MedicinePage() {
       <Banner page="medicine" />
       <CenterMain>
         <SearchHeader>
-          <Title>가을 질병 의약품</Title>
+          <Title>{getSeasonString()} 질병 의약품</Title>
           <SearchBar
             api="/api/medicine/search/"
             placeholder="의약품을 입력해 주세요"
