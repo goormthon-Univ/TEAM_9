@@ -57,7 +57,6 @@ const SubmitButton = styled.div`
 export default function SearchBar({ onSearch, placeholder = "" }) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("title");
-
   const onSubmit = () => {
     onSearch(query, activeCategory);
   };

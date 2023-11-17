@@ -1,8 +1,7 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CenterMain from "../../components/CenterMain";
 import CommunityRules from "../../components/CommunityRules.jsx";
-
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`

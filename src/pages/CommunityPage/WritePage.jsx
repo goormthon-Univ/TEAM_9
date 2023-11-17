@@ -60,7 +60,7 @@ const WritePage = () => {
     <>
       <CenterMain>
         <CommunityRules />
-        <h2> 게시글 작성</h2>
+        <h3> 게시글 작성</h3>
         <WriteForm onSubmit={handleSubmit}>
           <Dropdown>
             <option value="medicalConsultation">의료상담</option>

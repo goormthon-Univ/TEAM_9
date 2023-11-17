@@ -9,6 +9,7 @@ const BoardContainer = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
   flex-direction: column;
+  margin-bottom: 150px;
 `;
 
 const TitleRow = styled.div`
@@ -22,9 +23,9 @@ const TitleRow = styled.div`
 const PostRow = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center; /* 세로 중앙 정렬 추가 */
+  align-items: center;
   margin-bottom: 20px;
-  position: relative; /* 상대 위치 설정 */
+  position: relative;
 `;
 
 const Number = styled.div`

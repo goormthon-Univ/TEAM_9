@@ -18,7 +18,6 @@ const Button = styles.span(({ $activate = false } = {}) => ({
   color: $activate ? "white" : "black",
   cursor: "pointer",
 }));
-
 export default function Community({ content }) {
   return (
     <>
