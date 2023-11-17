@@ -16,7 +16,7 @@ function MedicineDetailMain({ medicineId }) {
   );
   return (
     <ErrorBoundary
-      fallback={<NotFound to="/medicine" buttonText="목록으로" />}
+      fallback={<NotFound to="../" buttonText="목록으로" />}
       errorKey={medicineId}
     >
       <Suspense fallback={<MedicineDetailSkeleton />}>
@@ -36,7 +36,7 @@ export default function MedicineDetailPage() {
           console.log("찾는 게 없어요!");
           return;
         }
-        navigate(`/medicine/${data[0].medicine_code}`);
+        navigate(`/medicine/medicine/${data[0].medicine_code}`);
       });
     },
     [navigate],

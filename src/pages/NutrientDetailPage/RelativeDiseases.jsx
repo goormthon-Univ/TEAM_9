@@ -19,13 +19,12 @@ const P = styled.p`
   }
 `;
 
-export default function DiseaseMedicine({ data }) {
-  if (data === null || data.length === 0) return <P>없음</P>;
+export default function RelativeDiseases({ data }) {
   return (
     <P>
-      {data.map(({ medicine_code, medicine_name }) => (
-        <Link to={`/medicine/medicine/${medicine_code}`} key={medicine_code}>
-          {medicine_name}
+      {data.map(({ code, name }) => (
+        <Link to={`/disease/${code}`} key={code}>
+          {name}
         </Link>
       ))}
     </P>
