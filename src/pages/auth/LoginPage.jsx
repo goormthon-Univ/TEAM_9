@@ -12,23 +12,58 @@ import {
 import { KAKAO_AUTH_URL } from "../../components/OAuth.jsx";
 import kakaoLogin from "../../assets/kakaoLogin.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginPage() {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberId, setRememberId] = useState(false);
+  const [formData, setFormData] = useState({
+    user_id: "",
+    user_pw: "",
+    rememberId: false,
+  });
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  // 	console.log(rememberId);
-  // }, [rememberId]);
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
 
-  const onLoginClick = () => {
-    // 로그인
+  const onLoginClick = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
 
-    // 아이디 저장 관리
-    // rememberId ? 쿠키 없애기 : 만들기
-    navigate("/");
+    const { user_id, user_pw, rememberId } = formData;
+
+    try {
+      const response = await axios.post(
+        "/api/login",
+        {
+          user_id,
+          user_pw,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      console.log(response.data);
+
+      response.data === "로그인 완료"
+        ? alert("로그인 완료")
+        : alert("로그인 실패");
+
+      if (rememberId) {
+        // TODO: Store the ID (e.g., in cookies or local storage)
+      }
+
+      // Navigate to the desired route
+      navigate("/");
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   return (
@@ -48,59 +83,63 @@ function LoginPage() {
           alignItems: "center",
         }}
       >
-        <Stack
-          justifyContent={"center"}
-          alignItems={"center"}
-          spacing={1}
-          width={"400px"}
-        >
-          <TextField
-            fullWidth
-            label="아이디"
-            variant="outlined"
-            placeholder="아이디를 입력하세요"
-            // helperText="영문, 숫자를 조합하여 4~16자 입력"
-            value={id}
-            onChange={(e) => {
-              setId(e.target.value);
-            }}
-          />
-
-          <TextField
-            fullWidth
-            label="비밀번호"
-            variant="outlined"
-            placeholder="비밀번호를 입력하세요"
-            type="password"
-            // helperText="영문자, 숫자, 특수문자 조합하여 9~20자 입력(대,소문자 구별)"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-
-          <Box width={"100%"}>
-            <FormControlLabel
-              control={<Checkbox value={rememberId} onChange={setRememberId} />}
-              label="아이디저장"
-            />
-          </Box>
-
-          <Button variant="contained" fullWidth onClick={onLoginClick}>
-            로그인
-          </Button>
-
-          <Box
-            display={"flex"}
-            width={"100%"}
+        <form onSubmit={onLoginClick}>
+          <Stack
             justifyContent={"center"}
             alignItems={"center"}
+            spacing={1}
+            width={"400px"}
           >
-            <Link to={"/auth/signup"}>
-              <Button>회원가입</Button>
-            </Link>
-          </Box>
-        </Stack>
+            <TextField
+              fullWidth
+              label="아이디"
+              variant="outlined"
+              placeholder="아이디를 입력하세요"
+              value={formData.user_id}
+              name="user_id"
+              onChange={handleInputChange}
+            />
+
+            <TextField
+              fullWidth
+              label="비밀번호"
+              variant="outlined"
+              placeholder="비밀번호를 입력하세요"
+              type="password"
+              value={formData.user_pw}
+              name="user_pw"
+              onChange={handleInputChange}
+            />
+
+            <Box width={"100%"}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formData.rememberId}
+                    onChange={handleInputChange}
+                    name="rememberId"
+                  />
+                }
+                label="아이디저장"
+              />
+            </Box>
+
+            <Button variant="contained" type="submit" fullWidth>
+              로그인
+            </Button>
+
+            <Box
+              display={"flex"}
+              width={"100%"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Link to={"/auth/signup"}>
+                <Button>회원가입</Button>
+              </Link>
+            </Box>
+          </Stack>
+        </form>
         <a href={KAKAO_AUTH_URL} className="kakaobtn">
           <img src={kakaoLogin} alt="카카오 로그인" />
         </a>
