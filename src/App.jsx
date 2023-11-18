@@ -13,6 +13,8 @@ import CommunityPage from "./pages/CommunityPage";
 import CommunityDetailPage from "./pages/CommunityPage/CommunityDetailPage.jsx";
 import WritePage from "./pages/CommunityPage/WritePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage";
+import LoginPage from "./pages/auth/LoginPage.jsx";
+import LoginHandler from "./pages/auth/LoginHandler.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 function Router() {
@@ -21,6 +23,10 @@ function Router() {
       <NavigationBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="auth" element={<LoginHandler />}>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<Home />} />
+        </Route>
         <Route path="disease">
           <Route path=":diseaseId" element={<DiseaseDetailPage />} />
           <Route path="" element={<DiseasePage />} />

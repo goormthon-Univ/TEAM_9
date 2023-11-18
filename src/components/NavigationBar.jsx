@@ -76,7 +76,9 @@ export default function NavigationBar() {
           <NavItem $active={firstPath === "community"}>건강 커뮤니티</NavItem>
         </Link>
         <LoginWrapper>
-          <div>로그인</div>|<div>회원가입</div>
+          <Link to="/auth/login">
+            <NavItem $active={firstPath === "auth"}>로그인</NavItem>
+          </Link>
         </LoginWrapper>
       </Nav>
     </NavWrapper>
