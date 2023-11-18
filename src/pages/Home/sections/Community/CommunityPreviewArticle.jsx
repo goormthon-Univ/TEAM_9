@@ -9,7 +9,7 @@ const Paragraph = styled.p`
   display: -ms-flexbox;
   display: box;
   word-wrap: break-word;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   font-size: 0.875rem;
