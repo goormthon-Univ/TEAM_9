@@ -86,14 +86,14 @@ const BannerBackdrop = styles.div`
 
 const bannerItemData = {
   disease: {
-    img: diseaseBanner
+    img: diseaseBanner,
   },
   medicine: {
     img: "https://images.unsplash.com/photo-1670850756917-8ed6c2a71e12?q=80&w=2456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     text: "계절별 질병 의약품",
   },
   healthGuide: {
-    img: lifeBanner
+    img: lifeBanner,
   },
 };
 

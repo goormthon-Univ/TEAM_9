@@ -7,18 +7,6 @@ export const Section = styled.section`
   gap: 20px;
 `;
 
-export const TitleWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const More = styled.span`
-  font-size: 1rem;
-  color: #828282;
-`;
-
 export const ListGrid = styled.div`
   width: 100%;
   max-width: 1180px;

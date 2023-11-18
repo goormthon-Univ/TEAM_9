@@ -12,15 +12,27 @@ const TitleWrapper = styled.div`
 const More = styled.span`
   font-size: 1rem;
   color: #828282;
+  cursor: pointer;
 `;
 
-export default function SectionTitle( {title="", link=null, moreClick=null}={} ) {
-	return <TitleWrapper>
-		<Title>{title}</Title>
-		{
-			link !== null ? <Link to={link}><More>더보기</More></Link> :
-			moreClick !== null ? <More onClick={moreClick}>더보기</More> :
-			null
-		}
-	</TitleWrapper>;
+export default function SectionTitle({
+  title = "",
+  link = null,
+  moreClick = null,
+  moreRender = true,
+} = {}) {
+  return (
+    <TitleWrapper>
+      <Title>{title}</Title>
+      {link !== null ? (
+        <Link to={link}>
+          <More hidden={!moreRender}>더보기</More>
+        </Link>
+      ) : moreClick !== null ? (
+        <More onClick={moreClick} hidden={!moreRender}>
+          더보기
+        </More>
+      ) : null}
+    </TitleWrapper>
+  );
 }
