@@ -25,7 +25,11 @@ export default function DiseaseItem({ data }) {
   return (
     <Link to={data.disease_code}>
       <ListItem>
-        <ListItemImage src={data.disease_image} alt={data.disease_name} />
+        <ListItemImage
+          className="disease_thumb"
+          src={data.disease_image}
+          alt={data.disease_name}
+        />
         <ListItemName>{data.disease_name}</ListItemName>
       </ListItem>
     </Link>

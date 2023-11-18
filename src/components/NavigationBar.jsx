@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "styled-components";
 
 const NavWrapper = styles.nav`
-  margin-bottom: 10px;
 	position: relative;
 	z-index: 25;
 	width: 100%;
@@ -76,7 +75,9 @@ export default function NavigationBar() {
           <NavItem $active={firstPath === "community"}>건강 커뮤니티</NavItem>
         </Link>
         <LoginWrapper>
-          <div>로그인</div>|<div>회원가입</div>
+          <Link to="/auth/login">
+            <NavItem $active={firstPath === "auth"}>로그인</NavItem>
+          </Link>
         </LoginWrapper>
       </Nav>
     </NavWrapper>

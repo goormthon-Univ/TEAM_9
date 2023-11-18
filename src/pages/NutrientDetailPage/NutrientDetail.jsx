@@ -17,7 +17,7 @@ const Pic = styled.img`
 `;
 
 export default function NutrientDetail({ resource }) {
-  const data = resource().result; //pending backend
+  const data = resource();
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function NutrientDetail({ resource }) {
       <article>
         <section>
           <SubTitle>관련 질병</SubTitle>
-          <RelativeDiseases data={data} />
+          <RelativeDiseases data={data.disease} />
         </section>
       </article>
     </>

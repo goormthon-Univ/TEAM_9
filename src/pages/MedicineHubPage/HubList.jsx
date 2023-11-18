@@ -5,7 +5,6 @@ import { fetchAxios } from "../../utils/utils.js";
 
 function HubListViewer({ resource, mapper }) {
   let rawData = resource();
-  if (rawData?.result !== undefined) rawData = rawData.result; //pending backend
   return <ListGrid>{rawData.map(mapper)}</ListGrid>;
 }
 

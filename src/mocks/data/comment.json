@@ -1,0 +1,38 @@
+[
+    {
+        "board_no": 1,
+        "comment_author": "doctor",
+        "comment_body": "드라군 놀이다!",
+        "comment_date": "2023-11-17T22:49:20.622744"
+    },
+    {
+        "board_no": 1,
+        "comment_author": "Lybell",
+        "comment_body": "드!",
+        "comment_date": "2023-11-17T22:49:20.622745"
+    },
+    {
+        "board_no": 1,
+        "comment_author": "Hayan",
+        "comment_body": "라!",
+        "comment_date": "2023-11-17T22:49:20.622745"
+    },
+    {
+        "board_no": 1,
+        "comment_author": "Hartstein",
+        "comment_body": "군!",
+        "comment_date": "2023-11-17T22:49:20.622745"
+    },
+    {
+        "board_no": 2,
+        "comment_author": "doctor",
+        "comment_body": "댓글 33333",
+        "comment_date": "2023-11-18T08:49:20.622746"
+    },
+    {
+        "board_no": 3,
+        "comment_author": "doctor",
+        "comment_body": "댓글 44444",
+        "comment_date": "2023-11-18T09:52:20.622747"
+    }
+]
