@@ -69,6 +69,10 @@ export const handlers = [
     const season = getSeason();
     return HttpResponse.json(getSeasonDiseaseList(season));
   }),
+  http.get("/api/disease/representation", () => {
+    const season = getSeason();
+    return HttpResponse.json(getSeasonDiseaseList(season).slice(0, 4));
+  }),
   http.get("/api/disease/search/:query", ({ params }) => {
     const { query } = params;
     const filtered = diseaseData
@@ -184,6 +188,15 @@ export const handlers = [
   // 커뮤니티
   http.get("/api/community/board", () => {
     return HttpResponse.json(boardData);
+  }),
+  http.get("/api/community/representation/:boardType", ({ params }) => {
+    const { boardType } = params;
+    if (!["1", "2"].includes(boardType)) return notFoundError.clone();
+
+    const result = boardData
+      .filter(({ board_type }) => String(board_type) === boardType)
+      .slice(0, 4);
+    return HttpResponse.json(result);
   }),
   http.get("/api/community/search/:basis/:boardType/:prompt", ({ params }) => {
     const { basis, boardType, prompt } = params;

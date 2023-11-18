@@ -61,9 +61,16 @@ const StyledOverlap = styled.div`
     justify-content: center;
     padding: 12px;
     width: 196px;
+    transition: transform 0.2s;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(1);
+    }
   }
 
-  .div {
+  span {
     color: #ffffff;
     font-family: "Pretendard-Bold", Helvetica;
     font-size: 16px;
@@ -90,13 +97,11 @@ function MainBanner() {
           식습관 가이드 <br />
           알아보고 싶다면?
         </div>
-        <div className="frame">
-          <div className="div">
-            <Link to="/healthGuide">
-              <span>더 알아보기</span>
-            </Link>
+        <Link to="/healthGuide">
+          <div className="frame">
+            <span>더 알아보기</span>
           </div>
-        </div>
+        </Link>
       </div>
     </StyledOverlap>
   );
