@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { updatePostList } from "./dummyData.js";
 import CommunityRules from "../../components/CommunityRules";
 import CenterMain from "../../components/CenterMain";
 
@@ -53,7 +53,7 @@ const WriteButtonContainer = styled.div`
   justify-content: flex-end;
 `;
 
-const WritePage = (updatePostList) => {
+const WritePage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -70,6 +70,7 @@ const WritePage = (updatePostList) => {
       comments: [],
     };
 
+    console.log(updatePostList);
     // 글 목록 갱신 함수 호출
     updatePostList(newPost);
 
