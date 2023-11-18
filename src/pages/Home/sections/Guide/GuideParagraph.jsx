@@ -23,6 +23,7 @@ const Paragraph = styled.p`
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   .split {
+    display: block;
     margin-top: 20px;
   }
 `;
@@ -32,7 +33,7 @@ export default function GuideParagraph({ type }) {
     .split("\n")
     .reduce((arr, cur, i) => {
       if (arr.length === 0) return [cur];
-      arr.push(<div className="split" key={i} />);
+      arr.push(<span className="split" key={i} />);
       arr.push(cur);
       return arr;
     }, []);
