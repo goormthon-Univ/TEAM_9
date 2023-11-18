@@ -3,12 +3,12 @@ import GuideStyle from "./GuideStyle.jsx";
 import GuideParagraph from "./GuideParagraph.jsx";
 import { Bold } from "../../../../components/paragraphs.jsx";
 
-export default function LifeGuide() {
+export default function FoodGuide() {
   return (
     <GuideStyle>
-      <Link to="/healthGuide/living">
+      <Link to="/healthGuide/food">
         <div className="titleWrapper">
-          <Bold className="title">생활수칙 가이드</Bold>
+          <Bold className="title">식습관 가이드</Bold>
           <img
             alt="Frame"
             src="https://c.animaapp.com/ULZ0sU3D/img/frame-181.svg"
@@ -18,9 +18,9 @@ export default function LifeGuide() {
       <img
         className="icon"
         alt="Frame"
-        src="https://c.animaapp.com/ULZ0sU3D/img/frame-184.svg"
+        src="https://c.animaapp.com/ULZ0sU3D/img/frame-183.svg"
       />
-      <GuideParagraph type="living" />
+      <GuideParagraph type="food" />
     </GuideStyle>
   );
 }

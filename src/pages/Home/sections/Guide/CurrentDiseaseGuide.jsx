@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HealthGuideBox from "./HealthGuide.jsx";
+import FoodGuideBox from "./FoodGuide.jsx";
 import LifeGuideBox from "./LifeGuide.jsx";
 import { SubTitle } from "../../../../components/paragraphs.jsx";
 
@@ -32,7 +32,7 @@ export default function CurrentDiseaseGuide() {
       <SubTitle className="noMargin">현재 계절에 많이 발생하는 질병</SubTitle>
       <div className="currentDisease"></div>
       <div className="healthGuideWrapper">
-        <HealthGuideBox />
+        <FoodGuideBox />
         <LifeGuideBox />
       </div>
     </DiseaseWrapper>

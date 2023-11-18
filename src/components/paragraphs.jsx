@@ -17,9 +17,22 @@ export const Bold = styled.p`
   font-weight: 600;
 `;
 
-export const Paragraph = styled.p`
+export const P = styled.p`
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 32px;
   letter-spacing: 0em;
 `;
+
+export function Paragraph({children}) {
+  if(typeof children === "string") {
+    return children
+      .split("\n")
+      .map((line, i) => (
+        <P key={line.substring(0, 5) + "_" + i}>{line}</P>
+      ));
+  }
+  return <P>
+    {children}
+  </P>
+}
