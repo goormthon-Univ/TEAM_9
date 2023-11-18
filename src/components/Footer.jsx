@@ -1,43 +1,69 @@
-import styles from "styled-components";
+import styled from "styled-components";
 import logoWhite from "../assets/seasonwell-logo-white.svg";
 
-const FooterWrapper = styles.footer`
-	margin-top: 10px;
-	width: 100%;
-	height: 180px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #9D9D9D;
+const FooterWrapper = styled.footer`
+  margin-top: 10px;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
 `;
 
-const FooterBox = styles.div`
-	width: 100%;
-	max-width: 1200px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	color: white;
+const FooterBox = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
 `;
 
-const FooterImg = styles.img`
-	width: 100px;
-	height: 100px;
-	object-fit: contain;
+const FooterImg = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 `;
 
-const P = styles.p`
-	font-size: 0.8rem;
+const FooterLeft = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+`;
+
+const FooterText = styled.p`
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  &.left {
+    text-align: left;
+  }
+  &.right {
+    text-align: right;
+  }
 `;
 
 export default function Footer() {
   return (
     <FooterWrapper>
       <FooterBox>
-        <FooterImg src={logoWhite} alt="시즌웰 로고" />
-        <P>대충 푸터라는 내용. 뭐 넣으실지 디자이너분 정해주세요</P>
-        <P>만든사람: 팀 시즌웰</P>
-        <P>정다운 | 박병영 | 임채현 | 이근우 | 이정현 | 주현정 | 한기종</P>
+        <FooterText className="left">
+          이용약관 | 개인정보보호방침
+          <br />
+          상호명 : 시즌웰
+          <br />
+          copyright @ 구름톤 All rights reserved
+        </FooterText>
+        <FooterText className="right">
+          PM : 정다운
+          <br />
+          DE : 임채현
+          <br />
+          BE : 이정현, 주현정
+          <br />
+          FE : 박병영, 이근우, 한기종
+        </FooterText>
       </FooterBox>
     </FooterWrapper>
   );
