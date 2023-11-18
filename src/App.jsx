@@ -16,6 +16,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/auth/LoginPage.jsx";
 import LoginHandler from "./pages/auth/LoginHandler.jsx";
 import PersonalRecommand from "./pages/RecommandPage/PersonalRecommand.jsx";
+import MedicineRecommand from "./pages/RecommandPage/MedicineRecommand.jsx";
+import NutrientRecommand from "./pages/RecommandPage/NutritionRecommand.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 function Router() {
@@ -38,7 +40,22 @@ function Router() {
         </Route>
         <Route path="medicine">
           <Route path="" element={<MedicineHubPage />} />
-          <Route path="recommand" element={<PersonalRecommand />} />
+          <Route path="recommand">
+            <Route path="medicine">
+              <Route path="result" element={<MedicineRecommand />} />
+              <Route
+                path=""
+                element={<PersonalRecommand recommandTarget="medicine" />}
+              />
+            </Route>
+            <Route path="nutrient">
+              <Route path="result" element={<NutrientRecommand />} />
+              <Route
+                path=""
+                element={<PersonalRecommand recommandTarget="nutrient" />}
+              />
+            </Route>
+          </Route>
           <Route path="medicine">
             <Route path=":medicineId" element={<MedicineDetailPage />} />
             <Route path="" element={<MedicinePage />} />
