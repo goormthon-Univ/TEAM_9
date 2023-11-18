@@ -6,6 +6,7 @@ const StyledFrameWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  gap: 40px;
   .title {
     display: flex;
     justify-content: space-between;
