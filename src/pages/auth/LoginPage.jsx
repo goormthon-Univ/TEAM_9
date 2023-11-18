@@ -54,7 +54,7 @@ function LoginPage() {
             label="아이디"
             variant="outlined"
             placeholder="아이디를 입력하세요"
-            helperText="영문, 숫자를 조합하여 4~16자 입력"
+            // helperText="영문, 숫자를 조합하여 4~16자 입력"
             value={id}
             onChange={(e) => {
               setId(e.target.value);
@@ -67,7 +67,7 @@ function LoginPage() {
             variant="outlined"
             placeholder="비밀번호를 입력하세요"
             type="password"
-            helperText="영문자, 숫자, 특수문자 조합하여 9~20자 입력(대,소문자 구별)"
+            // helperText="영문자, 숫자, 특수문자 조합하여 9~20자 입력(대,소문자 구별)"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
