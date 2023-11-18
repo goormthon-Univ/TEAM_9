@@ -19,18 +19,6 @@ const FooterBox = styled.div`
   color: black;
 `;
 
-const FooterImg = styled.img`
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-`;
-
-const FooterLeft = styled.div`
-  display: flex;
-  gap: 20px;
-  justify-content: flex-start;
-`;
-
 const FooterText = styled.p`
   display: flex;
   align-items: center;

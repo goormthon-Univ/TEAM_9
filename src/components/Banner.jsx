@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "styled-components";
 import arrowRight from "../assets/arrowRight.svg";
 import diseaseBanner from "../assets/disease_banner.png";
+import medicineBanner from "../assets/medicine_banner.png";
 import lifeBanner from "../assets/life_banner.png";
 
 const BannerContainer = styles.div`
@@ -36,14 +37,6 @@ const BannerImage = styles.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-`;
-
-const BannerCaption = styles.span`
-  position: absolute;
-  left: 30px;
-  top: 20px;
-  color: black;
-  font-size: 2rem;
 `;
 
 const Button = styles.div`
@@ -86,16 +79,9 @@ const BannerBackdrop = styles.div`
 `;
 
 const bannerItemData = {
-  disease: {
-    img: diseaseBanner,
-  },
-  medicine: {
-    img: "https://images.unsplash.com/photo-1670850756917-8ed6c2a71e12?q=80&w=2456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    text: "계절별 질병 의약품",
-  },
-  healthGuide: {
-    img: lifeBanner,
-  },
+  disease: diseaseBanner,
+  medicine: medicineBanner,
+  healthGuide: lifeBanner,
 };
 
 function makeBannerItems(bannerId) {
@@ -105,11 +91,10 @@ function makeBannerItems(bannerId) {
     ...bannerId.slice(0, 2),
   ];
   return bannerArr.map((id, i) => {
-    const { img, text } = bannerItemData[id];
+    const img = bannerItemData[id];
     return (
       <BannerItem key={`${id}_${i - 2}`}>
         <BannerImage src={img} alt={id} />
-        {text && <BannerCaption>{text}</BannerCaption>}
       </BannerItem>
     );
   });
