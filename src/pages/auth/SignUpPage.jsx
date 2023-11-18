@@ -6,28 +6,22 @@ import {
   Box,
   TextField,
   Stack,
-  FormControlLabel,
-  Checkbox,
 } from "@mui/material";
-import { KAKAO_AUTH_URL } from "../../components/OAuth.jsx";
-import kakaoLogin from "../../assets/kakaoLogin.png";
 import { Link, useNavigate } from "react-router-dom";
 
-function LoginPage() {
+function SignUpPage() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberId, setRememberId] = useState(false);
+  const [confirmpassword, setconfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  // 	console.log(rememberId);
-  // }, [rememberId]);
-
-  const onLoginClick = () => {
-    // 로그인
-
-    // 아이디 저장 관리
-    // rememberId ? 쿠키 없애기 : 만들기
+  const onSignUpClick = () => {
+    if (password !== confirmpassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      setPassword("");
+      setconfirmPassword("");
+      return;
+    }
     navigate("/");
   };
 
@@ -38,7 +32,7 @@ function LoginPage() {
         fontWeight={"bold"}
         sx={{ mt: 8, borderBottom: "1px solid black" }}
       >
-        로그인
+        회원가입
       </Typography>
       <Box
         sx={{
@@ -74,15 +68,21 @@ function LoginPage() {
             }}
           />
 
-          <Box width={"100%"}>
-            <FormControlLabel
-              control={<Checkbox value={rememberId} onChange={setRememberId} />}
-              label="아이디저장"
-            />
-          </Box>
+          <TextField
+            fullWidth
+            label="비밀번호 재입력"
+            variant="outlined"
+            placeholder="비밀번호를 다시 입력하세요"
+            type="password"
+            helperText="영문자, 숫자, 특수문자 조합하여 9~20자 입력(대,소문자 구별)"
+            value={confirmpassword}
+            onChange={(e) => {
+              setconfirmPassword(e.target.value);
+            }}
+          />
 
-          <Button variant="contained" fullWidth onClick={onLoginClick}>
-            아이디 로그인
+          <Button variant="contained" fullWidth onClick={onSignUpClick}>
+            회원가입
           </Button>
 
           <Box
@@ -91,17 +91,14 @@ function LoginPage() {
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Link to={"/auth/signup"}>
-              <Button>회원가입</Button>
+            <Link to={"/auth/login"}>
+              <Button>로그인</Button>
             </Link>
           </Box>
         </Stack>
-        <a href={KAKAO_AUTH_URL} className="kakaobtn">
-          <img src={kakaoLogin} alt="카카오 로그인" />
-        </a>
       </Box>
     </Container>
   );
 }
 
-export default LoginPage;
+export default SignUpPage;
