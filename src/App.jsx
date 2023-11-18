@@ -15,6 +15,7 @@ import WritePage from "./pages/CommunityPage/WritePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/auth/LoginPage.jsx";
 import LoginHandler from "./pages/auth/LoginHandler.jsx";
+import PersonalRecommand from "./pages/RecommandPage/PersonalRecommand.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 function Router() {
@@ -37,6 +38,7 @@ function Router() {
         </Route>
         <Route path="medicine">
           <Route path="" element={<MedicineHubPage />} />
+          <Route path="recommand" element={<PersonalRecommand />} />
           <Route path="medicine">
             <Route path=":medicineId" element={<MedicineDetailPage />} />
             <Route path="" element={<MedicinePage />} />

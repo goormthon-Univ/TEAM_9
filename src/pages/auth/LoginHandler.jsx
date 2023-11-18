@@ -25,7 +25,11 @@ const LoginHandeler = (props) => {
     kakaoLogin();
   }, [props.history]);
 
-  return <Link to="/"></Link>;
+  return (
+    <div>
+      <Link to="/home">홈으로 이동</Link>
+    </div>
+  );
 };
 
 export default LoginHandeler;
