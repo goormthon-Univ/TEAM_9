@@ -95,7 +95,7 @@ const WriteButton = styled.button`
 const CommunityBoard = ({ tap }) => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태 추가
-
+  
   const filteredPostList =
     tap && tap !== "mainboard"
       ? postList.filter((post) => post.contentType === tap)
