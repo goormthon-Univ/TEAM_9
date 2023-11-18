@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Paragraph } from "../../../../components/paragraphs.jsx";
-import { getSeasonCode } from "../../../../utils/utils.js";
-import guideData from "../../../../data/guideData.json";
+import { Paragraph } from "@/components/paragraphs.jsx";
+import { getSeasonCode } from "@/utils/utils.js";
+import guideData from "@/data/guideData.json";
 
 const Section = styled.div`
   width: 100%;

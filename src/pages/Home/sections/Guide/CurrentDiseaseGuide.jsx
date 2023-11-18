@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import FoodGuideBox from "./FoodGuide.jsx";
 import LifeGuideBox from "./LifeGuide.jsx";
-import { SubTitle } from "../../../../components/paragraphs.jsx";
+import { SubTitle } from "@/components/paragraphs.jsx";
 
 const DiseaseWrapper = styled.div`
   width: 100%;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import GuideStyle from "./GuideStyle.jsx";
 import GuideParagraph from "./GuideParagraph.jsx";
-import { Bold } from "../../../../components/paragraphs.jsx";
+import { Bold } from "@/components/paragraphs.jsx";
 
 export default function LifeGuide() {
   return (

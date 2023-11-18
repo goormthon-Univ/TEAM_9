@@ -1,60 +1,34 @@
 import styled from "styled-components";
-import { SubTitle } from "../../../../components/paragraphs.jsx";
-import { Link } from "react-router-dom";
+import SectionTitle from "@/components/SectionTitle.jsx";
+import HubList from "@/pages/MedicineHubPage/HubList.jsx";
+import MedicineItem from "@/pages/MedicinePage/MedicineItem.jsx";
+import { getSeasonString } from "@/utils/utils.js";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 20px;
-  .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .noMargin {
-      margin: 0;
-    }
-    .more {
-      font-size: 1rem;
-      color: #828282;
-    }
-  }
   .topBox {
     width: 100%;
-    height: 120px;
-    box-sizing: border-box;
-    background-color: #f7f7f7;
-    border: 1px solid #cbcbcb;
-  }
-  .listBox {
+    height: 40px;
     display: flex;
-    width: 100%;
-    height: 268px;
-    gap: 36px;
-    .listItem {
-      flex: 25% 1 1;
-      height: 100%;
-      background-color: #d9d9d9;
-    }
+    font-family: Pretendard;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 export default function MedicineRecommand() {
   return (
     <Wrapper>
-      <div className="title">
-        <SubTitle className="noMargin">의약품 추천</SubTitle>
-        <Link to="/recommand">
-          <span className="more">더보기</span>
-        </Link>
-      </div>
-      <div className="topBox"></div>
-      <div className="listBox">
-        <div className="listItem"></div>
-        <div className="listItem"></div>
-        <div className="listItem"></div>
-        <div className="listItem"></div>
-      </div>
+      <SectionTitle title="의약품 추천" link="/medicine" />
+      <div className="topBox">{getSeasonString()}철 의약품!</div>
+      <HubList
+        api="/api/medicine/representation"
+        mapper={(item) => <MedicineItem key={item.medicine_code} data={item} />}
+      />
     </Wrapper>
   );
 }
