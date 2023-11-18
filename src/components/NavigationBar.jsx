@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "styled-components";
 
 const NavWrapper = styles.nav`
-  margin-bottom: 10px;
 	position: relative;
 	z-index: 25;
 	width: 100%;

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import styles from "styled-components";
 import arrowRight from "../assets/arrowRight.svg";
+import diseaseBanner from "../assets/disease_banner.png";
+import medicineBanner from "../assets/medicine_banner.png";
+import lifeBanner from "../assets/life_banner.png";
 
 const BannerContainer = styles.div`
   position: relative;
   width: 100%;
   height: 480px;
   overflow: hidden;
+  margin-top: 40px;
   margin-bottom: 40px;
 `;
 
@@ -33,14 +37,6 @@ const BannerImage = styles.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-`;
-
-const BannerCaption = styles.span`
-  position: absolute;
-  left: 30px;
-  top: 20px;
-  color: black;
-  font-size: 2rem;
 `;
 
 const Button = styles.div`
@@ -83,18 +79,9 @@ const BannerBackdrop = styles.div`
 `;
 
 const bannerItemData = {
-  disease: {
-    img: "https://images.unsplash.com/photo-1533042789716-e9a9c97cf4ee?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    text: "계절별 질병 치료법",
-  },
-  medicine: {
-    img: "https://images.unsplash.com/photo-1670850756917-8ed6c2a71e12?q=80&w=2456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    text: "계절별 질병 의약품",
-  },
-  healthGuide: {
-    img: "https://images.unsplash.com/photo-1609725236589-d987ffc8133a?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    text: "계절별 건강 가이드",
-  },
+  disease: diseaseBanner,
+  medicine: medicineBanner,
+  healthGuide: lifeBanner,
 };
 
 function makeBannerItems(bannerId) {
@@ -104,11 +91,10 @@ function makeBannerItems(bannerId) {
     ...bannerId.slice(0, 2),
   ];
   return bannerArr.map((id, i) => {
-    const { img, text } = bannerItemData[id];
+    const img = bannerItemData[id];
     return (
       <BannerItem key={`${id}_${i - 2}`}>
         <BannerImage src={img} alt={id} />
-        <BannerCaption>{text}</BannerCaption>
       </BannerItem>
     );
   });
