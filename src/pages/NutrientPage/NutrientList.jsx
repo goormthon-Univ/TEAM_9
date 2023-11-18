@@ -11,7 +11,7 @@ const ListGrid = styled.div`
 `;
 
 export default function NutrientList({ resource }) {
-  let data = resource().result; //pending backend
+  let data = resource();
 
   return (
     <ListGrid>

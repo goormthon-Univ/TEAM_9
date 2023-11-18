@@ -26,6 +26,15 @@ const Pic = styled.img`
   object-fit: cover;
 `;
 
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  h2 {
+    margin-bottom: -10px;
+  }
+`;
+
 export default function DiseaseDetail({ resource }) {
   const data = resource();
 
@@ -39,7 +48,7 @@ export default function DiseaseDetail({ resource }) {
           <Paragraph>{data.disease_symptom}</Paragraph>
         </div>
       </SummeryWrapper>
-      <article>
+      <Article>
         <Title>질병 치료법</Title>
         <section>
           <SubTitle>예방법</SubTitle>
@@ -54,7 +63,7 @@ export default function DiseaseDetail({ resource }) {
           <SubTitle>관련 약품</SubTitle>
           <DiseaseMedicine data={data.disease_cure.keyword} />
         </section>
-      </article>
+      </Article>
     </>
   );
 }
