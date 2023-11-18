@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import logoWhite from "../assets/seasonwell-logo-white.svg";
 
 const FooterWrapper = styled.footer`
   margin-top: 10px;
