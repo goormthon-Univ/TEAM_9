@@ -78,7 +78,7 @@ const CommunityDetailPage = () => {
         </ContentContainer>
         <CommentContainer>
           <h3>댓글</h3>
-          {comments.map((comment) => (
+          {comments == null ? "없음" : comments.map((comment) => (
             <div key={comment.id}>
               <Line />
               <strong>{comment.author}</strong>
