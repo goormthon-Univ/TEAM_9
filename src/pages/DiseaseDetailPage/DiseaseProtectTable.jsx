@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 
 const Column = styled.div`
-  width: 120px;
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
