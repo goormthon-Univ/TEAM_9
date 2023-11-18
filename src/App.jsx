@@ -13,6 +13,9 @@ import CommunityPage from "./pages/CommunityPage";
 import CommunityDetailPage from "./pages/CommunityPage/CommunityDetailPage.jsx";
 import WritePage from "./pages/CommunityPage/WritePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage";
+import LoginPage from "./pages/auth/LoginPage.jsx";
+import LoginHandler from "./pages/auth/LoginHandler.jsx";
+import PersonalRecommand from "./pages/RecommandPage/PersonalRecommand.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 function Router() {
@@ -21,12 +24,21 @@ function Router() {
       <NavigationBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route
+          path="/oauth" //redirect_url
+          element={<LoginHandler />} //당신이 redirect_url에 맞춰 꾸밀 컴포넌트
+        />
+        <Route path="auth">
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<Home />} />
+        </Route>
         <Route path="disease">
           <Route path=":diseaseId" element={<DiseaseDetailPage />} />
           <Route path="" element={<DiseasePage />} />
         </Route>
         <Route path="medicine">
           <Route path="" element={<MedicineHubPage />} />
+          <Route path="recommand" element={<PersonalRecommand />} />
           <Route path="medicine">
             <Route path=":medicineId" element={<MedicineDetailPage />} />
             <Route path="" element={<MedicinePage />} />

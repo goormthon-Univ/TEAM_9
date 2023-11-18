@@ -252,6 +252,11 @@ export const handlers = [
     },
   ),
 
+  http.get("/auth", () => {
+    console.log("dcalled!");
+    return HttpResponse.json({ success: true, result: "oauth" });
+  }),
+
   http.get("/api/invalid", () => {
     return new HttpResponse("404 not found", {
       status: 404,
