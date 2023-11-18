@@ -15,6 +15,7 @@ import WritePage from "./pages/CommunityPage/WritePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/auth/LoginPage.jsx";
 import LoginHandler from "./pages/auth/LoginHandler.jsx";
+import SignUpPage from "./pages/auth/SignUpPage.jsx";
 import PersonalRecommand from "./pages/RecommandPage/PersonalRecommand.jsx";
 import Home from "./pages/Home/Home.jsx";
 
@@ -30,7 +31,7 @@ function Router() {
         />
         <Route path="auth">
           <Route path="login" element={<LoginPage />} />
-          <Route path="signup" element={<Home />} />
+          <Route path="signup" element={<SignUpPage />} />
         </Route>
         <Route path="disease">
           <Route path=":diseaseId" element={<DiseaseDetailPage />} />
