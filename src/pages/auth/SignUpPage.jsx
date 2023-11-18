@@ -42,7 +42,12 @@ function SignUpPage() {
           alignItems: "center",
         }}
       >
-        <Stack justifyContent={"center"} alignItems={"center"} spacing={1}>
+        <Stack
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={1}
+          width={"400px"}
+        >
           <TextField
             fullWidth
             label="아이디"

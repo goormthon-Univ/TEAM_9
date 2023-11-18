@@ -48,7 +48,12 @@ function LoginPage() {
           alignItems: "center",
         }}
       >
-        <Stack justifyContent={"center"} alignItems={"center"} spacing={1}>
+        <Stack
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={1}
+          width={"400px"}
+        >
           <TextField
             fullWidth
             label="아이디"
@@ -82,7 +87,7 @@ function LoginPage() {
           </Box>
 
           <Button variant="contained" fullWidth onClick={onLoginClick}>
-            아이디 로그인
+            로그인
           </Button>
 
           <Box
