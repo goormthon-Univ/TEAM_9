@@ -2,6 +2,8 @@ import { http, HttpResponse } from "msw";
 import diseaseData from "./data/disease.json";
 import medicineData from "./data/medicine.json";
 import nutrientData from "./data/nutrient.json";
+import boardData from "./data/board.json";
+import commentData from "./data/comment.json";
 
 const diseaseMap = diseaseData.reduce((map, data) => {
   return map.set(data.disease_code, data);
@@ -11,6 +13,10 @@ const medicineMap = medicineData.reduce((map, data) => {
 }, new Map());
 const notFoundError = new HttpResponse("404 not found", {
   status: 404,
+  headers: { "Content-Type": "text/plain" },
+});
+const badRequestError = new HttpResponse("400 bad request", {
+  status: 400,
   headers: { "Content-Type": "text/plain" },
 });
 
@@ -44,9 +50,21 @@ function getDiseaseFromId(id) {
   };
 }
 
+function searchBoard(basis, boardNo, prompt) {
+  return (data) => {
+    if (boardNo !== "all" && String(data.board_type) !== boardNo) return false;
+    if (basis === "title") return data.board_title.includes(prompt);
+    if (basis === "content") return data.board_content.includes(prompt);
+    if (basis === "author") return data.board_author.includes(prompt);
+    return false;
+  };
+}
+
 //msw (mock api를 작성하실 때는 /api/를 붙여서 작성해주세요)
 
 export const handlers = [
+  // 질병
+
   http.get("/api/disease", () => {
     const season = getSeason();
     return HttpResponse.json(getSeasonDiseaseList(season));
@@ -77,6 +95,9 @@ export const handlers = [
     if (data === null) return notFoundError.clone();
     return HttpResponse.json(data);
   }),
+
+  // 의약품
+
   http.get("/api/medicine", () => {
     const medicine_list = medicineData.map((data) => ({
       ...data,
@@ -117,6 +138,9 @@ export const handlers = [
       disease_code: null,
     });
   }),
+
+  // 영양제
+
   http.get("/api/nutrients", () => {
     return HttpResponse.json(nutrientData);
   }),
@@ -156,6 +180,77 @@ export const handlers = [
 
     return HttpResponse.json(result);
   }),
+
+  // 커뮤니티
+  http.get("/api/community/board", () => {
+    return HttpResponse.json(boardData);
+  }),
+  http.get("/api/community/search/:basis/:boardType/:prompt", ({ params }) => {
+    const { basis, boardType, prompt } = params;
+    if (!["title", "content", "author"].includes(basis))
+      return badRequestError.clone();
+    if (!["all", "1", "2"].includes(boardType)) return badRequestError.clone();
+
+    const result = boardData.filter(searchBoard(basis, boardType, prompt));
+    return HttpResponse.json(result);
+  }),
+
+  http.post("/api/community/write", async ({ request }) => {
+    const newPost = await request.json();
+
+    boardData.push({
+      board_no: boardData.length + 1,
+      board_title: newPost.board_title,
+      board_content: newPost.board_content,
+      board_author: "You",
+      disease_code: newPost.disease_code,
+      board_date: new Date().toISOString(),
+      board_type: newPost.board_type,
+    });
+
+    return HttpResponse.json({ success: true, result: "게시글 생성 완료" });
+  }),
+
+  http.get("/api/community/:boardType", ({ params }) => {
+    const { boardType } = params;
+    if (!["1", "2"].includes(boardType)) return notFoundError.clone();
+
+    const result = boardData.filter(
+      ({ board_type }) => String(board_type) === boardType,
+    );
+    return HttpResponse.json(result);
+  }),
+  http.get("/api/community/:boardType/:boardNo", ({ params }) => {
+    const { boardType, boardNo } = params;
+    const result = boardData.find(({ board_type, board_no }) => {
+      return String(board_type) === boardType && String(board_no) === boardNo;
+    });
+    if (result === undefined) return notFoundError.clone();
+    return HttpResponse.json(result);
+  }),
+
+  http.get("/api/community/:boardType/:boardNo/comment", ({ params }) => {
+    const { boardNo } = params;
+    const result = commentData.filter(({ board_no }) => {
+      return String(board_no) === boardNo;
+    });
+    return HttpResponse.json(result);
+  }),
+  http.post(
+    "/api/community/:boardType/:boardNo/comment/write",
+    async ({ params, request }) => {
+      const { boardNo } = params;
+      const newComment = await request.json();
+
+      commentData.push({
+        board_no: +boardNo,
+        comment_author: "You",
+        comment_body: newComment.comment_body,
+        comment_date: new Date().toISOString(),
+      });
+      return HttpResponse.json({ success: true, result: "댓글 작성 완료" });
+    },
+  ),
 
   http.get("/api/invalid", () => {
     return new HttpResponse("404 not found", {

@@ -53,8 +53,7 @@ function Router() {
           {/* <Route path="1" element={<CommunityDetailPage />} /> */}
           <Route path="" element={<CommunityPage content="mainboard" />} />
         </Route>
-        {/* <Route path={"*"} element={<NotFoundPage />} /> */}
-
+        <Route path={"*"} element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
