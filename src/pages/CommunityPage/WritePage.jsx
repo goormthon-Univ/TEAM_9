@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { updatePostList } from "./dummyData.js";
+import { postList, updatePostList } from "./dummyData.js";
 import CommunityRules from "../../components/CommunityRules";
 import CenterMain from "../../components/CenterMain";
 
@@ -60,7 +60,7 @@ const WritePage = () => {
     event.preventDefault();
 
     const newPost = {
-      number: 3, // 예시로 새 글의 번호를 지정합니다.
+      number: postList.length+2, // 예시로 새 글의 번호를 지정합니다.
       title: event.target.elements.title.value,
       writer: "그누", // 실제로는 로그인 정보 또는 사용자 입력을 받아와야 합니다.
       views: 0, // 조회수 초기값
