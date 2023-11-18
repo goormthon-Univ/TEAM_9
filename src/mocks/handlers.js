@@ -64,7 +64,6 @@ function searchBoard(basis, boardNo, prompt) {
 
 export const handlers = [
   // 질병
-
   http.get("/api/disease", () => {
     const season = getSeason();
     return HttpResponse.json(getSeasonDiseaseList(season));
