@@ -23,7 +23,11 @@ function Router() {
       <NavigationBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="auth" element={<LoginHandler />}>
+        <Route
+          path="/oauth" //redirect_url
+          element={<LoginHandler />} //당신이 redirect_url에 맞춰 꾸밀 컴포넌트
+        />
+        <Route path="auth">
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<Home />} />
         </Route>
