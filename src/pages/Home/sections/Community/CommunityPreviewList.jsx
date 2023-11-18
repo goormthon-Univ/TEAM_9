@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 function CommunityPreviewListRenderer({ resource }) {
-  const boardList = resource();
+  const boardList = resource().slice(0, 3);
   return (
     <Wrapper>
       {boardList.map(({ board_no, board_title, board_content }) => {
